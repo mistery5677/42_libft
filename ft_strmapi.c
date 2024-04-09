@@ -32,12 +32,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	return (str);
 }
 
-/*char my_function(unsigned int index, char character) {
-	// Add any operation you want to perform on each character
-	// For example, let's increment each character by 1
-	return (character + 1);
-}
-
+/*
 int	main(void) {
 	char strmapi_string[] = "Hello";
 	printf("Input string: %s\n", input_string);

@@ -1,4 +1,4 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <ctype.h>
 
 #include "libft.h"
@@ -49,7 +49,7 @@ int main()
     printf("After zeroing: %s\n\n", str2);
 
     char *src = "hello";
-    char dest[3];
+    char dest[] = "world";
     printf("TESTING FT_MEMCPY \n\n");
     printf("Before memcpy: %s\n", dest);
     ft_memcpy(dest, src, 3);
@@ -89,7 +89,7 @@ int main()
     printf("%d\n", ft_tolower(c_toupper));
     printf("%d\n\n", tolower(c_toupper));
 
-    const char s_strchr[] = "hello";
+    const char s_strchr[] = "hello world";
     printf("TESTING FT_STRCHR \n\n");
     printf("my: %s\n", ft_strchr(s_strchr, 'o'));
     printf("original: %s\n", strchr(s_strchr, 'o'));
@@ -105,8 +105,8 @@ int main()
     free(str_dupp2);
 
     printf("TESTING FT_STRRCHR \n\n");
-    printf("my: %s\n", ft_strrchr(s_strchr, 'h'));
-    printf("original: %s\n\n", strrchr(s_strchr, 'h'));
+    printf("my: %s\n", ft_strrchr(s_strchr, 'l'));
+    printf("original: %s\n\n", strrchr(s_strchr, 'l'));
 
     char s1_strncmp[] = "hello";
     char s2_strncmp[] = "heloo";
@@ -116,10 +116,10 @@ int main()
 
     const char s_memchr[] = "hello";
     printf("TESTING FT_MEMCHR\n\n");
-    printf("my: %p\n", ft_memchr(s_memchr, 'e', 1));
-    printf("original: %p\n\n", memchr(s_memchr, 'e', 0));  
+    printf("my: %p\n", ft_memchr(s_memchr, 'e', 3));
+    printf("original: %p\n\n", memchr(s_memchr, 'e', 3));  
 
-    char s1_memcmp[] = "hello";
+    char s1_memcmp[] = "hallo";
     char s2_memcmp[] = "hello";
     printf("TESTING FT_MEMCMP\n\n");
     printf("my: %d\n", ft_memcmp(s1_memcmp, s2_memcmp, 5));
@@ -135,7 +135,6 @@ int main()
     printf("meu: %d\n", ft_atoi(nptr_atoi));
     printf("original: %d\n\n", atoi(nptr_atoi));
 
-        // Test case 1: Allocating memory for an array of integers
     int *intArray;
     size_t numInts = 5;
     size_t intSize = sizeof(int);
@@ -145,7 +144,6 @@ int main()
     intArray = (int *)ft_calloc(numInts, intSize);
     if (intArray != NULL) {
         printf("Memory allocation successful\n");
-        // Check if the memory is properly initialized to 0
         for (size_t i = 0; i < numInts; i++) {
             printf("%d ", intArray[i]);
         }
@@ -156,7 +154,6 @@ int main()
         printf("Memory allocation failed\n");
     }
 
-    // Test case 2: Allocating memory for an array of characters (string)
     char *str_calloc;
     size_t strLength = 10;
     size_t charSize = sizeof(char);
@@ -165,7 +162,6 @@ int main()
     str_calloc = (char *)ft_calloc(strLength, charSize);
     if (str_calloc != NULL) {
         printf("Memory allocation successful\n");
-        // Check if the memory is properly initialized to '\0' (null characters)
         printf("String: %s\n\n", str_calloc);
         free(str_calloc); 
     } else {
@@ -189,23 +185,25 @@ int main()
     char *str_strtrim = ft_strtrim(s1_strtrim, set_strtrim);
     printf("TESTING FT_STRTRIM \n\n");
     printf("meu: %s\n\n", str_strtrim);
-    printf("start: %d\n\n", start(s1_strtrim, set_strtrim));
-    printf("end: %d\n\n", end(s1_strtrim, set_strtrim));
+    //printf("start: %d\n\n", start(s1_strtrim, set_strtrim));
+    //printf("end: %d\n\n", end(s1_strtrim, set_strtrim));
     free(str_strtrim);
 
-        char const s_ft_split[] = "eeeee";
-        char const s_ft_split1[] = "hhhhhheeehh";
-        char const s_ft_split2[] = "eeeehabceeehhhh";
-        char const s_ft_split3[] = "hhhhh";
-        char const s_ft_split4[] = "eeehhehheee";
+        char **s_ft_split = ft_split("ALOeWORLDeee42", 'e');
+        //char const s_ft_split1[] = "hhhhhheeehh";
+        //char const s_ft_split2[] = "eeeehabceeehhhh";
+        //char const s_ft_split3[] = "hhhhh";
+        //char const s_ft_split4[] = "eeehhehheee";
 
         printf("TESTING FT_SPLIT \n\n");
-        printf("string --> %s\n", ft_split(s_ft_split3, 'e'));
-        printf("count_words: 0 --> %d\n", count_words(s_ft_split, 'e'));
-        printf("count_words: 2 --> %d\n", count_words(s_ft_split1, 'e'));
-        printf("count_words: 2 --> %d\n", count_words(s_ft_split2, 'e'));
-        printf("count_words: 1 --> %d\n", count_words(s_ft_split3, 'e'));
-        printf("count_words: 2 --> %d\n", count_words(s_ft_split4, 'e'));
+        printf("string --> %s\n", s_ft_split[0]);
+        printf("string --> %s\n", s_ft_split[1]);
+        printf("string --> %s\n\n", s_ft_split[2]);
+        //printf("count_words: 0 --> %d\n", count_words(s_ft_split, 'e'));
+        //printf("count_words: 2 --> %d\n", count_words(s_ft_split1, 'e'));
+        //printf("count_words: 2 --> %d\n", count_words(s_ft_split2, 'e'));
+        //printf("count_words: 1 --> %d\n", count_words(s_ft_split3, 'e'));
+        //printf("count_words: 2 --> %d\n", count_words(s_ft_split4, 'e'));
 
     printf("TESTING FT_ITOA \n\n");
     printf("123 --> %s\n", ft_itoa(123));
@@ -247,5 +245,5 @@ int main()
     else
         printf("ficheiro criado com sucesso\n\n");
     ft_putnbr_fd(123455, fd_putnbr);
-    close(fd_putnbr);cd 
-}*/
+    close(fd_putnbr);
+}
