@@ -6,7 +6,7 @@
 /*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:00:06 by miafonso          #+#    #+#             */
-/*   Updated: 2024/04/08 14:00:07 by miafonso         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:28:44 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,54 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (map);
 }
 
-/*int main()
+#include <stdio.h> // For printf
+
+// Function to be applied to each element of the list
+void *add_one(void *content)
 {
-	t_list *head  = malloc(sizeof(t_list));
+    int *num = (int *)content;
+    int *result = malloc(sizeof(int));
+    if (result == NULL)
+        return NULL;
+    *result = *num + 1;
+    return result;
+}
 
-	t_list *node1 = malloc(sizeof(t_list));
-	t_list *node2 = malloc(sizeof(t_list));
-	t_list *node3 = malloc(sizeof(t_list));
+// Function to delete an integer
+void del_int(void *content)
+{
+    free(content);
+}
 
-	node1->content = "Node 1";
-	node2->content = "Node 2";
-	node3->content = "Node 3";
+int main()
+{
+    // Create some list elements
+    int content1 = 10;
+    int content2 = 20;
+    int content3 = 30;
 
-	head->next = node3;
-	node3->next = node2;
-	node2->next = node1;
-	node1->next = NULL;
+    t_list *elem1 = ft_lstnew(&content1);
+    t_list *elem2 = ft_lstnew(&content2);
+    t_list *elem3 = ft_lstnew(&content3);
 
-	printf("before free: %s\n", (char *)node2->content);
-}*/
+    // Link the elements together
+    elem1->next = elem2;
+    elem2->next = elem3;
+    elem3->next = NULL;
+
+    // Apply ft_lstmap to the list to add 1 to each element
+    t_list *mapped_list = ft_lstmap(elem1, &add_one, &del_int);
+
+    // Print the mapped list
+    while (mapped_list != NULL)
+    {
+        printf("%d\n", *(int *)(mapped_list->content));
+        mapped_list = mapped_list->next;
+    }
+
+    // Free the memory allocated for the original list and the mapped list
+    ft_lstclear(&elem1, &del_int);
+    ft_lstclear(&mapped_list, &del_int);
+
+    return 0;
+}

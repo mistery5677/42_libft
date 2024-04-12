@@ -6,7 +6,7 @@
 /*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 09:26:20 by miafonso          #+#    #+#             */
-/*   Updated: 2024/04/09 16:01:13 by miafonso         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:41:25 by miafonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t		i;
 	size_t		j;
-	char	*str_big;
-	char	*str_little;
+	char		*str_big;
+	char		*str_little;
 
 	i = 0;
 	str_big = (char *) big;

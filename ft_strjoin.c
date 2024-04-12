@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/04/08 15:20:25 by miafonso          #+#    #+#             */
 /*   Updated: 2024/04/08 15:20:25 by miafonso         ###   ########.fr       */
 /*                                                                            */
@@ -20,9 +23,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char			*new_str;
 
 	i = -1;
+	if (!s1 || !s2)
+		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	new_str = malloc(((len_s1 + len_s2) + 1) + sizeof(char));
+	new_str = malloc(((len_s1 + len_s2) + 1) * sizeof(char));
 	if (new_str == NULL)
 		return (NULL);
 	while (s1[++i])

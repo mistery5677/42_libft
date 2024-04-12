@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: miafonso <miafonso@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/04/08 14:06:33 by miafonso          #+#    #+#             */
 /*   Updated: 2024/04/08 14:06:33 by miafonso         ###   ########.fr       */
 /*                                                                            */
@@ -36,15 +39,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n, fd);
 	}
 }
-
-/*int main()
-{
-		printf("TESTING FT_PUTNBR_FD \n\n");
-	int fd_putnbr = open("fd_putendl.txt",
-			O_CREAT | S_IRWXU | O_WRONLY | O_APPEND, 0666);
-	if (fd_putnbr == -1)
-		perror("open");
-	else
-		printf("ficheiro criado com sucesso\n\n");
-	ft_putnbr_fd(2147483647, fd_putnbr);
-}*/

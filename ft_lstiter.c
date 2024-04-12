@@ -24,3 +24,12 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		lst = temp;
 	}
 }
+
+#include <stdio.h> // For printf
+
+// A function to be applied to the content of each list node
+void iterate_content(void *content)
+{
+    int *num = (int *)content;
+    printf("%d\n", *num);
+}
