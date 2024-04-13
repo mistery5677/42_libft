@@ -31,6 +31,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		*character = *character + 1;
 }
 
+#include <stdio.h>
 int	main(void) {
 	char strmapi_string[] = "Hello";
 	printf("Input string: %s\n", strmapi_string);

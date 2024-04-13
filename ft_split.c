@@ -13,32 +13,28 @@
 #include "libft.h"
 #include <stdio.h>
 
-int	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-	int	words;
+	int	start;
 	int	i;
 
 	i = 0;
-	words = 0;
-	if (s[i] != c)
-		words++;
-	while (s[i])
+	start = 0;
+	while(*s)
 	{
-		if (s[i] == c)
+		if(*s != c && start == 0)
 		{
-			while (s[i] == c)
-				i++;
-			if (s[i] != '\0')
-				words++;
-			if (s[i] == '\0')
-				return (words);
+			i++;
+			start = 1;
 		}
-		i++;
+		else if(*s == c)
+			start = 0;
+		s++;
 	}
-	return (words);
+	return (i);
 }
 
-int	word_size(char const *s, char c)
+static int	word_size(char const *s, char c)
 {
 	int	i;
 
@@ -48,7 +44,7 @@ int	word_size(char const *s, char c)
 	return (i);
 }
 
-char	*build_str(char const *s, unsigned int start, unsigned int end)
+static char	*build_str(char const *s, unsigned int start, unsigned int end)
 {
 	char	*word;
 	int		i;

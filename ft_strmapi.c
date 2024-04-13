@@ -31,14 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-
-/*
-int	main(void) {
-	char strmapi_string[] = "Hello";
-	printf("Input string: %s\n", input_string);
-
-	char *result = ft_strmapi(input_string, &my_function);
-
-	printf("Result: %s\n", result);
-	free(result);
-}*/
